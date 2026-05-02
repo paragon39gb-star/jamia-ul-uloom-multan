@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;700;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-urdu: "Noto Sans Arabic", "Inter", sans-serif;
+  --font-arabic: "Amiri", serif;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-[#fdfdfd] text-[#2c3e50];
+  }
+}
+
+.urdu-text {
+  font-family: var(--font-urdu);
+  line-height: 1.8;
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+}
+
+/* Institutional look helpers */
+.section-title-underline {
+  @apply relative inline-block pb-4 mb-8;
+}
+.section-title-underline::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-24 h-1.5 bg-emerald-700 rounded-full;
+}
+.urdu-text.section-title-underline::after {
+  @apply left-auto right-0;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+.urdu-text.animate-marquee {
+  animation: marquee-reverse 30s linear infinite;
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Card styling */
+.glass-card {
+  @apply bg-white border border-stone-200 shadow-sm hover:shadow-md transition-all;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
